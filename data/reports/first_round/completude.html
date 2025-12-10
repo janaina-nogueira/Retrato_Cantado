@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Relatório de Completude</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Chart.js para os gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #f7f7fb; --fg: #111; --muted:#666; --card:#fff; --border:#e6e6ef; --accent:#4a90e2;
+    }
+    body { margin:0; padding:24px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+           background:var(--bg); color:var(--fg); }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; }
+    .subtitle { color: var(--muted); margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-bottom:24px; }
+    .card { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:16px;
+            box-shadow: 0 2px 8px rgba(16,24,40,.04); }
+    .kpi-title { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+    .kpi-value { font-size:28px; font-weight:700; margin-top:6px; }
+    table { width:100%; border-collapse: collapse; background: var(--card); border:1px solid var(--border);
+            border-radius:12px; overflow:hidden; }
+    thead th { background:#fafbff; color:#333; text-align:left; font-weight:600; font-size:13px;
+               border-bottom:1px solid var(--border); padding:10px; }
+    tbody td { padding:10px; border-top:1px solid var(--border); vertical-align: top; }
+    code { background: #f0f2f7; padding:2px 6px; border-radius:6px; }
+    .charts { display:grid; grid-template-columns: 1fr 2fr; gap:16px; margin: 16px 0 24px; }
+    .footer { color: var(--muted); font-size: 12px; margin-top: 16px; }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .charts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Relatório de Completude</h1>
+    <div class="subtitle">Gerado em 2025-10-16 19:45:37 UTC</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="kpi-title">Total Atribuído</div>
+        <div class="kpi-value">70,000</div>
+      </div>
+      <div class="card">
+        <div class="kpi-title">Total Anotado</div>
+        <div class="kpi-value">46,233</div>
+      </div>
+      <div class="card">
+        <div class="kpi-title">% Global</div>
+        <div class="kpi-value">66.05%</div>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="card">
+        <h3 style="margin:0 0 8px;">Percentual Global</h3>
+        <canvas id="donutGlobal" height="240"></canvas>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px;">% Completo por Usuário</h3>
+        <canvas id="barUsers" height="240"></canvas>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;">
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th style="text-align:right;">Atribuído</th>
+            <th style="text-align:right;">Anotado</th>
+            <th style="text-align:right;">Pendentes</th>
+            <th style="text-align:right;">% Completo</th>
+            <th style="text-align:right;">Sim</th>
+            <th style="text-align:right;">Não</th>
+            <th style="text-align:right;">Não sei</th>
+            <th style="text-align:right;">Extras</th>
+            <th>Última atualização</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>user01</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1326</td>
+            <td style="text-align:right;">539</td>
+            <td style="text-align:right;">135</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-16 19:43:20</td>
+          </tr>
+          <tr>
+            <td><code>user02</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1588</td>
+            <td style="text-align:right;">311</td>
+            <td style="text-align:right;">101</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-13 03:04:38</td>
+          </tr>
+          <tr>
+            <td><code>user03</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1403</td>
+            <td style="text-align:right;">585</td>
+            <td style="text-align:right;">12</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-08 21:45:08</td>
+          </tr>
+          <tr>
+            <td><code>user06</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1653</td>
+            <td style="text-align:right;">172</td>
+            <td style="text-align:right;">175</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-09 01:04:33</td>
+          </tr>
+          <tr>
+            <td><code>user09</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1159</td>
+            <td style="text-align:right;">780</td>
+            <td style="text-align:right;">61</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-09 06:15:18</td>
+          </tr>
+          <tr>
+            <td><code>user10</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1647</td>
+            <td style="text-align:right;">316</td>
+            <td style="text-align:right;">37</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-07 18:47:31</td>
+          </tr>
+          <tr>
+            <td><code>user13</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1623</td>
+            <td style="text-align:right;">346</td>
+            <td style="text-align:right;">31</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-09 16:57:43</td>
+          </tr>
+          <tr>
+            <td><code>user14</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1598</td>
+            <td style="text-align:right;">361</td>
+            <td style="text-align:right;">41</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-15 12:01:49</td>
+          </tr>
+          <tr>
+            <td><code>user15</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1206</td>
+            <td style="text-align:right;">779</td>
+            <td style="text-align:right;">15</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-09 04:40:53</td>
+          </tr>
+          <tr>
+            <td><code>user18</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1774</td>
+            <td style="text-align:right;">226</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-13 07:30:56</td>
+          </tr>
+          <tr>
+            <td><code>user20</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1760</td>
+            <td style="text-align:right;">118</td>
+            <td style="text-align:right;">122</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-11 14:55:31</td>
+          </tr>
+          <tr>
+            <td><code>user21</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1498</td>
+            <td style="text-align:right;">417</td>
+            <td style="text-align:right;">85</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-06 17:51:59</td>
+          </tr>
+          <tr>
+            <td><code>user22</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1726</td>
+            <td style="text-align:right;">245</td>
+            <td style="text-align:right;">29</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-16 14:47:31</td>
+          </tr>
+          <tr>
+            <td><code>user24</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1557</td>
+            <td style="text-align:right;">433</td>
+            <td style="text-align:right;">10</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-13 03:39:34</td>
+          </tr>
+          <tr>
+            <td><code>user25</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1560</td>
+            <td style="text-align:right;">430</td>
+            <td style="text-align:right;">10</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-10 02:10:14</td>
+          </tr>
+          <tr>
+            <td><code>user26</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1718</td>
+            <td style="text-align:right;">106</td>
+            <td style="text-align:right;">176</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-15 03:56:41</td>
+          </tr>
+          <tr>
+            <td><code>user27</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1407</td>
+            <td style="text-align:right;">590</td>
+            <td style="text-align:right;">3</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-16 04:51:03</td>
+          </tr>
+          <tr>
+            <td><code>user28</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1444</td>
+            <td style="text-align:right;">325</td>
+            <td style="text-align:right;">231</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-08 06:07:57</td>
+          </tr>
+          <tr>
+            <td><code>user29</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1645</td>
+            <td style="text-align:right;">282</td>
+            <td style="text-align:right;">73</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-11 23:18:08</td>
+          </tr>
+          <tr>
+            <td><code>user30</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1193</td>
+            <td style="text-align:right;">650</td>
+            <td style="text-align:right;">157</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-11 03:37:37</td>
+          </tr>
+          <tr>
+            <td><code>user32</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">100.00%</td>
+            <td style="text-align:right;">1152</td>
+            <td style="text-align:right;">754</td>
+            <td style="text-align:right;">94</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-12 19:37:44</td>
+          </tr>
+          <tr>
+            <td><code>user17</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">1162</td>
+            <td style="text-align:right;">838</td>
+            <td style="text-align:right;">58.10%</td>
+            <td style="text-align:right;">745</td>
+            <td style="text-align:right;">371</td>
+            <td style="text-align:right;">46</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-14 19:07:09</td>
+          </tr>
+          <tr>
+            <td><code>user35</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">856</td>
+            <td style="text-align:right;">1144</td>
+            <td style="text-align:right;">42.80%</td>
+            <td style="text-align:right;">735</td>
+            <td style="text-align:right;">120</td>
+            <td style="text-align:right;">1</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-15 04:03:33</td>
+          </tr>
+          <tr>
+            <td><code>user05</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">636</td>
+            <td style="text-align:right;">1364</td>
+            <td style="text-align:right;">31.80%</td>
+            <td style="text-align:right;">507</td>
+            <td style="text-align:right;">120</td>
+            <td style="text-align:right;">9</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-16 03:23:09</td>
+          </tr>
+          <tr>
+            <td><code>user23</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">625</td>
+            <td style="text-align:right;">1375</td>
+            <td style="text-align:right;">31.25%</td>
+            <td style="text-align:right;">484</td>
+            <td style="text-align:right;">136</td>
+            <td style="text-align:right;">5</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-16 01:36:41</td>
+          </tr>
+          <tr>
+            <td><code>user04</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">487</td>
+            <td style="text-align:right;">1513</td>
+            <td style="text-align:right;">24.35%</td>
+            <td style="text-align:right;">365</td>
+            <td style="text-align:right;">114</td>
+            <td style="text-align:right;">8</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-16 15:23:12</td>
+          </tr>
+          <tr>
+            <td><code>user16</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">300</td>
+            <td style="text-align:right;">1700</td>
+            <td style="text-align:right;">15.00%</td>
+            <td style="text-align:right;">223</td>
+            <td style="text-align:right;">67</td>
+            <td style="text-align:right;">10</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-15 04:33:06</td>
+          </tr>
+          <tr>
+            <td><code>user11</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">65</td>
+            <td style="text-align:right;">1935</td>
+            <td style="text-align:right;">3.25%</td>
+            <td style="text-align:right;">49</td>
+            <td style="text-align:right;">12</td>
+            <td style="text-align:right;">4</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-14 17:33:12</td>
+          </tr>
+          <tr>
+            <td><code>user33</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">65</td>
+            <td style="text-align:right;">1935</td>
+            <td style="text-align:right;">3.25%</td>
+            <td style="text-align:right;">22</td>
+            <td style="text-align:right;">43</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-11 01:43:34</td>
+          </tr>
+          <tr>
+            <td><code>user31</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">23</td>
+            <td style="text-align:right;">1977</td>
+            <td style="text-align:right;">1.15%</td>
+            <td style="text-align:right;">12</td>
+            <td style="text-align:right;">10</td>
+            <td style="text-align:right;">1</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-08 19:24:19</td>
+          </tr>
+          <tr>
+            <td><code>user34</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">8</td>
+            <td style="text-align:right;">1992</td>
+            <td style="text-align:right;">0.40%</td>
+            <td style="text-align:right;">5</td>
+            <td style="text-align:right;">3</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-12 22:51:59</td>
+          </tr>
+          <tr>
+            <td><code>user12</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">6</td>
+            <td style="text-align:right;">1994</td>
+            <td style="text-align:right;">0.30%</td>
+            <td style="text-align:right;">4</td>
+            <td style="text-align:right;">2</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">2025-10-09 00:26:26</td>
+          </tr>
+          <tr>
+            <td><code>user07</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0.00%</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">nan</td>
+          </tr>
+          <tr>
+            <td><code>user08</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0.00%</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">nan</td>
+          </tr>
+          <tr>
+            <td><code>user19</code></td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">2000</td>
+            <td style="text-align:right;">0.00%</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="text-align:right;">0</td>
+            <td style="white-space:nowrap;">nan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      Fonte: <code>completude.csv</code>. | HTML gerado via Jinja2 + Chart.js.
+    </div>
+  </div>
+
+  <script>
+    // Dados injetados pelo Jinja (em JSON)
+    const users = ["user01", "user02", "user03", "user06", "user09", "user10", "user13", "user14", "user15", "user18", "user20", "user21", "user22", "user24", "user25", "user26", "user27", "user28", "user29", "user30", "user32", "user17", "user35", "user05", "user23", "user04", "user16", "user11", "user33", "user31", "user34", "user12", "user07", "user08", "user19"];
+    const pct = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 58.1, 42.8, 31.8, 31.25, 24.35, 15.0, 3.25, 3.25, 1.15, 0.4, 0.3, 0.0, 0.0, 0.0];
+    const donutLabels = ["Concluído", "Restante"];
+    const donutValues = [66.05, 33.95];
+
+    // Cores neutras (Chart.js escolhe cores padrão se não definirmos muitos)
+    const ctxDonut = document.getElementById('donutGlobal').getContext('2d');
+    new Chart(ctxDonut, {
+      type: 'doughnut',
+      data: {
+        labels: donutLabels,
+        datasets: [{
+          data: donutValues,
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { position: 'bottom' },
+          tooltip: { enabled: true }
+        },
+        cutout: '55%'
+      }
+    });
+
+    const ctxBar = document.getElementById('barUsers').getContext('2d');
+    new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: users,
+        datasets: [{
+          label: '% completo',
+          data: pct,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { callback: (v)=> v + '%' }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx)=> `${ctx.parsed.y.toFixed(2)}%`
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

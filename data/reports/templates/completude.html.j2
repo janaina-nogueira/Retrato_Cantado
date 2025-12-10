@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Relatório de Completude</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Chart.js para os gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #f7f7fb; --fg: #111; --muted:#666; --card:#fff; --border:#e6e6ef; --accent:#4a90e2;
+    }
+    body { margin:0; padding:24px; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+           background:var(--bg); color:var(--fg); }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; }
+    .subtitle { color: var(--muted); margin-bottom: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-bottom:24px; }
+    .card { background: var(--card); border:1px solid var(--border); border-radius:12px; padding:16px;
+            box-shadow: 0 2px 8px rgba(16,24,40,.04); }
+    .kpi-title { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+    .kpi-value { font-size:28px; font-weight:700; margin-top:6px; }
+    table { width:100%; border-collapse: collapse; background: var(--card); border:1px solid var(--border);
+            border-radius:12px; overflow:hidden; }
+    thead th { background:#fafbff; color:#333; text-align:left; font-weight:600; font-size:13px;
+               border-bottom:1px solid var(--border); padding:10px; }
+    tbody td { padding:10px; border-top:1px solid var(--border); vertical-align: top; }
+    code { background: #f0f2f7; padding:2px 6px; border-radius:6px; }
+    .charts { display:grid; grid-template-columns: 1fr 2fr; gap:16px; margin: 16px 0 24px; }
+    .footer { color: var(--muted); font-size: 12px; margin-top: 16px; }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .charts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Relatório de Completude</h1>
+    <div class="subtitle">Gerado em {{ generated_at }}</div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="kpi-title">Total Atribuído</div>
+        <div class="kpi-value">{{ assigned_sum }}</div>
+      </div>
+      <div class="card">
+        <div class="kpi-title">Total Anotado</div>
+        <div class="kpi-value">{{ annotated_sum }}</div>
+      </div>
+      <div class="card">
+        <div class="kpi-title">% Global</div>
+        <div class="kpi-value">{{ pct_global }}%</div>
+      </div>
+    </div>
+
+    <div class="charts">
+      <div class="card">
+        <h3 style="margin:0 0 8px;">Percentual Global</h3>
+        <canvas id="donutGlobal" height="240"></canvas>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px;">% Completo por Usuário</h3>
+        <canvas id="barUsers" height="240"></canvas>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;">
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th style="text-align:right;">Atribuído</th>
+            <th style="text-align:right;">Anotado</th>
+            <th style="text-align:right;">Pendentes</th>
+            <th style="text-align:right;">% Completo</th>
+            <th style="text-align:right;">Sim</th>
+            <th style="text-align:right;">Não</th>
+            <th style="text-align:right;">Não sei</th>
+            <th style="text-align:right;">Extras</th>
+            <th>Última atualização</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in rows %}
+          <tr>
+            <td><code>{{ r.user }}</code></td>
+            <td style="text-align:right;">{{ r.assigned_total }}</td>
+            <td style="text-align:right;">{{ r.annotated_total }}</td>
+            <td style="text-align:right;">{{ r.pending }}</td>
+            <td style="text-align:right;">{{ "%.2f"|format(r.percent_complete) }}%</td>
+            <td style="text-align:right;">{{ r.label_sim }}</td>
+            <td style="text-align:right;">{{ r.label_nao }}</td>
+            <td style="text-align:right;">{{ r.label_nao_sei }}</td>
+            <td style="text-align:right;">{{ r.extra_annotations }}</td>
+            <td style="white-space:nowrap;">{{ r.last_update }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      Fonte: <code>completude.csv</code>. | HTML gerado via Jinja2 + Chart.js.
+    </div>
+  </div>
+
+  <script>
+    // Dados injetados pelo Jinja (em JSON)
+    const users = {{ chart_users_json | safe }};
+    const pct = {{ chart_pct_json | safe }};
+    const donutLabels = {{ donut_labels_json | safe }};
+    const donutValues = {{ donut_values_json | safe }};
+
+    // Cores neutras (Chart.js escolhe cores padrão se não definirmos muitos)
+    const ctxDonut = document.getElementById('donutGlobal').getContext('2d');
+    new Chart(ctxDonut, {
+      type: 'doughnut',
+      data: {
+        labels: donutLabels,
+        datasets: [{
+          data: donutValues,
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { position: 'bottom' },
+          tooltip: { enabled: true }
+        },
+        cutout: '55%'
+      }
+    });
+
+    const ctxBar = document.getElementById('barUsers').getContext('2d');
+    new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: users,
+        datasets: [{
+          label: '% completo',
+          data: pct,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { callback: (v)=> v + '%' }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx)=> `${ctx.parsed.y.toFixed(2)}%`
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

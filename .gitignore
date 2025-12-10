@@ -1,0 +1,11 @@
+.DS_Store
+.env
+data/local-only
+old
+data/users_hashed.csv
+data/frases-musicas-final-filled.csv
+data/frases-musicas-final-filled.parquet
+data/reports/completude_detalhe_pendentes.csv
+data/reports/completude.csv
+data/reports/completude.html
+data/annotations
