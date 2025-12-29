@@ -1,0 +1,111 @@
+﻿Exemplos de Padrões:
+
+
+1. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Adjetivo
+   1. Ela é cheirosa
+2. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Advérbio + Adjetivo
+   1. Ela é muito cheirosa
+3. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Auxiliar + Adjetivo
+   1. Ela está sendo chata
+4. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Auxiliar + Advérbio  + Adjetivo
+   1. Ela está sendo muito chata
+5. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Verbo + Adjetivo
+   1. Ela está ficando incomodada
+6. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Verbo + Advérbio + Adjetivo
+   1. Ela está ficando muito incomodada
+7. Sujeito OU Nome Próprio OU Pronome + Verbo + Auxiliar + Adjetivo
+   1. Ela acabou sendo injusta
+8. Sujeito OU Nome Próprio OU Pronome + Verbo + Auxiliar + Advérbio + Adjetivo
+   1. Ela vive sendo muito injusta
+9. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Verbo no Particípio
+   1. Ela foi educada
+10. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Advérbio + Verbo Particípio 
+   1. Ela foi muito educada
+11. Sujeito OU Nome Próprio OU Pronome + Verbo + Adjetivo 
+   1. Ela ficou feia
+12. Sujeito OU Nome Próprio OU Pronome + Verbo + Advérbio + Adjetivo
+   1. Ela ficou muito feia
+13. Sujeito OU Nome Próprio OU Pronome + Adjetivo
+   1. Menina aventureira
+14. Sujeito OU Nome Próprio OU Pronome + Pronome +  Verbo + Adjetivo 
+   1. Ela se tornou arrogante
+15. Sujeito OU Nome Próprio OU Pronome +Pronome +  Verbo + Adjetivo
+   1. Ela se tornou muito arrogante
+16. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Pronome +  Verbo + Adjetivo
+   1. Ela está se tornando arrogante
+17. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Pronome +  Verbo + Advérbio + Adjetivo
+   1. Ela está se tornando muito arrogante
+18. Sujeito OU Nome Próprio OU Pronome + Verbo + Pronome + Verbo + Adjetivo
+   1. Ela ficou se achando incrível
+19. Sujeito OU Nome Próprio OU Pronome + Verbo + Pronome +  Verbo + Advérbio + Adjetivo
+   1. Ela ficou se achando muito incrível
+20. Sujeito OU Nome Próprio OU Pronome + Pontuação + Adjetivo (Aposto Descritivo) 
+   1. Menina, travessa.
+21. Sujeito OU Nome Próprio OU Pronome + Pontuação + Determinante + Adjetivo (Aposto Descritivo) 
+   1. Mariana, a valente.
+22. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Substantivo
+   1. Ela é puta
+23. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Advérbio + Substantivo
+   1. Ela é muito puta
+24. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Auxiliar + Substantivo
+   1. Ela está sendo parceira
+25. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Auxiliar + Advérbio + Substantivo
+   1. Ela está sendo muito parceira
+26. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Verbo + Substantivo
+   1. Ela está virando líder 
+27. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Verbo + Advérbio + Substantivo
+   1. Ela está ficando muito puta
+28. Sujeito OU Nome Próprio OU Pronome + Verbo + Auxiliar + Substantivo
+   1. Ela ficou sendo chefe
+29. Sujeito OU Nome Próprio OU Pronome + Verbo + Auxiliar + Advérbio + Substantivo
+   1. Ela permanece sendo pouco exemplo
+30. Sujeito OU Nome Próprio OU Pronome + Verbo + Substantivo
+   1. Ela virou chefe
+31. Sujeito OU Nome Próprio OU Pronome + Verbo + Advérbio + Substantivo
+   1. Ela ficou muito puta
+32. Sujeito OU Nome Próprio OU Pronome + Substantivo
+   1. Mariana vaca
+33. Sujeito OU Nome Próprio OU Pronome + Pronome +  Verbo + Substantivo
+   1. Ela se tornou referência
+34. Sujeito OU Nome Próprio OU Pronome + Pronome +  Verbo + Advérbio + Substantivo
+   1. Ela se tornou possivelmente doutora
+35. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Pronome +  Verbo + Substantivo
+   1. Ela está se tornando chefe
+36. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Pronome +  Verbo + Advérbio + Substantivo
+   1. Ela está se tornando possivelmente mestre
+37. Sujeito OU Nome Próprio OU Pronome + Verbo + Pronome + Verbo + Substantivo
+   1. Ela ficou se achando líder
+38. Sujeito OU Nome Próprio OU Pronome + Verbo + Pronome +  Verbo + Advérbio + Substantivo
+   1. Ela ficou se achando bastante líder
+39. Sujeito OU Nome Próprio OU Pronome + Pontuação + Substantivo (Aposto Descritivo)
+   1. Mariana, vaca
+40. Sujeito OU Nome Próprio OU Pronome + Pontuação + Determinante + Substantivo (Aposto Descritivo) 
+   1. Mariana, uma vaca
+41. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Advérbio + Advérbio + Adjetivo
+   1. Ela é realmente muito bonita
+42. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Auxiliar + Advérbio + Advérbio + Adjetivo
+   1. Ela está sendo bem pouco justa
+43. Sujeito OU Nome Próprio OU Pronome + Verbo + Auxiliar + Advérbio + Advérbio + Adjetivo
+   1. Ela anda sendo muito calma
+44. Sujeito OU Nome Próprio OU Pronome + Advérbio + Advérbio + Adjetivo
+   1. Ela realmente muito irritada
+45. Sujeito OU Nome Próprio OU Pronome + Adjetivo + Preposição + Substantivo
+   1. Ela bonita de verdade
+46. Sujeito OU Nome Próprio OU Pronome + Adjetivo + Preposição + Determinante + Substantivo
+   1. Ela forte na vida
+47. Sujeito OU Nome Próprio OU Pronome + Adjetivo + Verbo no Infinitivo
+   1. Ela chata de lidar
+48. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Adjetivo + Preposição + Substantivo
+   1. Ela é bonita de ver
+49. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Substantivo + Preposição + Substantivo
+   1. Ela é chefe da equipe
+50. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Substantivo + Verbo no Infinitivo
+   1. Ela é difícil de aguentar
+51. Sujeito OU Nome Próprio OU Pronome + Verbo + Adjetivo + Preposição + Substantivo
+   1. Ela ficou feia de ver
+52. Sujeito OU Nome Próprio OU Pronome + Verbo + Advérbio + Adjetivo + Preposição + Substantivo
+   1. Ela ficou muito feia de ver
+53. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Verbo no Particípio + Preposição + Substantivo
+   1. Ela foi educada na escola
+54. Sujeito OU Nome Próprio OU Pronome + Auxiliar + Advérbio + Verbo no Particípio + Preposição + Substantivo
+   1. Ela foi muito educada na infância
